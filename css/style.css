@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200&display=swap');
+
+:root {
+    --font-color1: white;
+    --font-color2:black;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+}
+
+section {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: start;
+}
+
+section:nth-of-type(2) {
+    background-color: var(--color-four);   
+}
+
+section:nth-of-type(3) {
+    background-color: var(--color-secundary);
+}
+
+section:nth-of-type(4) {
+    background-color: var(--color-terciary);
+}
+
+::-webkit-scrollbar{
+    width: 8px;
+    border-radius: 20px;
+}
+
+::-webkit-scrollbar-track{
+    border:1px solid white;
+    box-shadow: inset 0 0 2.5px 2px rgba(0,0,0,0.5);
+}
+
+::-webkit-scrollbar-thumb{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(0,212,255,1) 100%);
+    border-radius: 3px;
+}
+
+@media screen and (max-width: 600px) {
+    html,
+    body {        
+        -webkit-overflow-scrolling: touch;       
+    }
+    .container{
+        overflow-x: hidden;
+    }
+    .container::-webkit-scrollbar {
+        width: 0;
+    }
+}
+
+/*******************************************************************************************/
+/******************************************************************************************/
+/**************************** M E N U | H E A D E R **************************************/
+/*#region Menu*/
+.logo {
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.header {
+    box-sizing: border-box;
+    width: 100%;
+    height: 50px;
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgb(131,111,255);
+    background: linear-gradient(0deg, rgba(131,111,255,1) 0%, rgba(72,118,255,1) 100%);
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+}
+
+.header a span{
+    color:#00FFFF;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    gap: .4rem;
+}
+
+.menu a {
+    display: block;
+    text-decoration: none;
+    padding: .3rem;
+    color: var(--font-color1);
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: 0.9s all;
+}
+
+.menu a:hover {
+    background: white;
+    color: black;
+}
+
+.btn-mobile {
+    display: none;
+}
+
+@media (max-width:600px) {       
+    .menu {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 50px;
+        right: 0px;
+        background: rgb(131,111,255);
+        background: linear-gradient(0deg, rgba(131,111,255,1) 0%, rgba(72,118,255,1) 100%);
+        transition: .6s;
+        z-index: 1000;
+        height: 0px;
+        visibility: hidden;
+        overflow-y:hidden;        
+    }
+
+    .nav.active .menu {
+        display: block;
+        height: calc(100vh - 50px);
+        visibility: visible;
+        overflow-y: auto;
+    }
+
+    .menu a {
+        padding: 1rem 0;
+        margin: 0 1rem;
+        text-align: center;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        border-bottom: 2px solid silver;
+    }
+
+    .btn-mobile {
+        display: flex;
+        padding: .5rem 1rem;
+        cursor:pointer;
+        background: none;
+        border:none;
+    }
+
+    .icon-hamburger{
+        display: block;
+        border-top:2px solid ;
+        width: 20px;
+        color: var(--font-color1);
+    }
+
+    .icon-hamburger::after, .icon-hamburger::before{
+        content:' ';
+        display: block;
+        width:20px;
+        height: 2px;
+        background: currentColor;
+        margin-top: 5px; 
+        transition: .3s;  
+        position: relative;     
+    }
+
+    .nav.active .icon-hamburger{
+        border-top-color: transparent;
+    }
+
+    .nav.active .icon-hamburger::before{
+        transform: rotate(135deg);
+    }
+
+    .nav.active .icon-hamburger::after{
+        transform: rotate(-135deg);
+        top: -7px;
+    }
+}
+
+/*#endregion Menu*/
+
+/*******************************************************************************************/
+/******************************************************************************************/
+/**************************** G R I D  I N I C I A L **************************************/
+/*#region inicio*/
+section:nth-of-type(1) {
+    background: white;
+    position: relative;
+}
+.gridInicio{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 100%;    
+    width:100%;
+    background: rgb(131,111,255);
+background: linear-gradient(0deg, rgba(131,111,255,1) 0%, rgba(72,118,255,1) 100%);
+}
+
+.text1{
+    grid-column: 1/2;
+    grid-row: 1/1;
+    width: 100%;
+    padding-top:100px;
+    text-align: center;
+    align-self: center;
+    font-size: 27px;
+    color:var(--font-color1);
+}
+
+.s-text1{
+    font-size: 60px;
+}
+.s-text2{
+    color:#00FFFF;
+    font-weight: bold;
+}
+
+.imagem-inicio{
+    grid-column: 2/2;
+    grid-row: 1/1;
+    align-self: center;   
+}
+
+.imagem-inicio img{
+    align-self: center;
+    margin-left: 180px;
+}
+
+/*#endregion inicio*/
