@@ -305,6 +305,34 @@ section:nth-of-type(1) {
     }
 }
 
+@media (min-width:768px) and (max-width:1080px){
+    .gridInicio {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 1fr 1fr;
+        margin-bottom: 150px;
+        margin-top:50px;
+    }
+
+    .imagem-inicio img {
+        align-self: center;
+        width: 80%;
+        margin-left:30px;
+    }
+
+    .text1 {
+       margin-left:20px
+    }
+
+    .s-text1 {
+        margin-left:20px
+    }
+
+    .s-text2 {
+        margin-left:20px
+    }
+   
+}
+
 /*#endregion inicio*/
 
 /*******************************************************************************************/
@@ -455,6 +483,33 @@ section:nth-of-type(1) {
     }
 }
 
+@media (min-width:768px) and (max-width:1080px){
+    .imagem-sobre{
+        width:60%;
+        margin-top: 45px;
+    }
+    .imagem-sobre img {
+        margin-left:130px;
+    }
+
+    .text-s{      
+        margin-top: 70px;
+    }
+    .text3-s{        
+        margin-top:180px;
+    }
+
+    .text4-s{
+        grid-column: 2/3;
+        grid-row: 2/4;
+        line-height: 2.5em;
+        font-weight: 600;   
+        font-size:16px;
+        padding: 0 60px;
+    }
+    
+}
+
 /*#endregion Sobre*/
 
 /*******************************************************************************************/
@@ -464,7 +519,7 @@ section:nth-of-type(1) {
 .gridExpertise{
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 25% 1fr;
+    grid-template-rows: 20% 1fr;
     width: 100vw;
     background: rgb(131, 111, 255);
     background: linear-gradient(0deg, rgba(131, 111, 255, 1) 0%, rgba(72, 118, 255, 1) 100%);
@@ -495,123 +550,44 @@ section:nth-of-type(1) {
     padding: 0 10%; 
 }
 
-.details {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    color:white;
+.progress-container{
+    width:60%;
+    margin:20px auto;
+    margin-bottom:20px;    
 }
 
-.bar{
-    position: relative;
-    border:2px solid #00FFFF;
-    border-radius: 20px;
+.progress-container p{
+    margin:6px;
+    color:var(--font-color1);
+    font-weight: bold;
 }
 
-.bar div{
-    position: relative;
-    width: 0%;
-    height: 9px;
+.progress{
+    width:100%;
+    height: 18px;
+    background: rgb(22, 22, 22);
+    border-radius:10px;
+}
+
+.progress .progress-bar{
+    width:0%;
+    opacity: 0;
+    height: 100%;
+    background-color: #00FFFF;
     border-radius: 10px;
-    background:#00FFFF;
+    position: relative;
+    transition: all .5s;
 }
 
-.skills:not(:last-child){
-    margin-bottom:30px;
+.progress-bar span{
+    position:absolute;
+    top:0;
+    right: 0;
+    color:white;
+    font-size:13px;
+    font-weight: bold;
 }
 
-/* now add css animation */
-
-#html{
-    animation: html-fill 2s forwards;
-}
-
-@keyframes html-fill{
-    100%{
-        width: 90%;
-    }
-}
-
-#css{
-    animation: css-fill 2s forwards;
-}
-
-@keyframes css-fill{
-    100%{
-        width: 90%;
-    }
-}
-
-#bootstrap{
-    animation: bootstrap-fill 2s forwards;
-}
-
-@keyframes bootstrap-fill{
-    100%{
-        width: 60%;
-    }
-}
-
-#js{
-    animation: js-fill 2s forwards;
-}
-
-@keyframes js-fill{
-    100%{
-        width: 80%;
-    }
-}
-
-#csharp{
-    animation: csharp-fill 2s forwards;
-}
-
-@keyframes csharp-fill{
-    100%{
-        width: 95%;
-    }
-}
-
-#python{
-    animation: python-fill 2s forwards;
-}
-
-@keyframes python-fill{
-    100%{
-        width: 50%;
-    }
-}
-
-#sql{
-    animation: sql-fill 2s forwards;
-}
-
-@keyframes sql-fill{
-    100%{
-        width: 95%;
-    }
-}
-
-#figma{
-    animation: figma-fill 2s forwards;
-}
-
-@keyframes figma-fill{
-    100%{
-        width: 60%;
-    }
-}
-
-#photo{
-    animation: photo-fill 2s forwards;
-}
-
-@keyframes photo-fill{
-    100%{
-        width: 60%;
-    }
-}
 
 @media screen and (max-width:600px){
     .gridExpertise{
@@ -625,6 +601,16 @@ section:nth-of-type(1) {
     .text2-e{
         font-size:17px;
         margin-top:100px;        
+    }
+}
+
+@media screen and (max-width:1080px){
+    .text-e{
+        margin-top: 45px;
+    }
+
+    .text2-e{      
+        margin-top:130px;        
     }
 }
 
