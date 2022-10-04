@@ -1,28 +1,52 @@
-const skillsSection = document.getElementById('skills-section');
-const progressbars = document.querySelectorAll('.progress-bar');
+const progressBar = document.querySelectorAll(".progress-bar");
+let progressBarContainer = document.querySelector(".show-on-scroll");
 
-function showProgress(){
-    progressbars.forEach(progressbar=>{
-        const value = progressbar.dataset.progress;
-      progressbar.style.opacity = 1;
-      progressbar.style.width = `${value}%`;
-    });
-}
+let start;
 
-function hideProgress(){
-    progressbars.forEach(p=>{
-        p.style.opacity=0;
-        p.style.width = 0;
-    })
-}
-
-window.addEventListener('scroll',()=>{
-    const sectionPos = skillsSection.getBoundingClientRect().top;
-    const screenPos = window.innerHeight / 2;
-
-    if(sectionPos < screenPos){
-        showProgress();
-    }else{
-        hideProgress();
+document.onscroll = function () {
+    if (isElementInViewport(progressBarContainer)) {
+        if (!start) {
+            window.requestAnimationFrame(loop);
+        }
+    } else {
+        start = null;
     }
-});
+};
+
+const animationTime = 4000;
+
+function loop(timestamp) {
+    if (!start) {
+        start = timestamp;
+    }
+    const elapsed = timestamp - start;
+    const progress = elapsed / animationTime;
+    progressBar.forEach((bar) => {
+        const progressComplete = bar.getAttribute("data-complete");
+        const width = progress < 1 ? Math.ceil(progress * 100) : progressComplete;
+
+        if (width <= progressComplete) {
+            bar.style.width = width + "%";
+            bar.innerHTML = width + "%";
+        }
+    });
+
+    if(progress <=1){
+        window.requestAnimationFrame(loop);
+    }
+
+}
+
+
+function isElementInViewport(element){
+    var rectangle = element.getBoundingClientRect();
+    var height = window.innerHeight || document.documentElement.clientHeight;
+    var top = rectangle.top;
+    var bottom = rectangle.bottom;
+
+    return(
+        (top <= 0 && bottom >= 0) ||
+        (bottom >= height && top <= height) ||
+        (top >= 0 && bottom <= height)
+    );
+}
